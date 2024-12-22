@@ -135,10 +135,12 @@ public class AddressBook {
             System.out.println("Enter the city you want to search for: ");
             String city=sc.next();
             cityStore.getOrDefault(city,Collections.emptySet()).stream().forEach(System.out::println);
+            System.out.println("number of contacts having city as "+city+" are :"+cityStore.get(city).stream().count());
         }else if(c==2){
             System.out.println("Enter the state you want to search for: ");
             String state=sc.next();
             stateStore.getOrDefault(state,Collections.emptySet()).stream().forEach(System.out::println);
+            System.out.println("number of contacts having state as "+state+" are :"+stateStore.get(state).stream().count());
         }else{
             System.out.println("Invalid Choice");
         }
