@@ -5,8 +5,10 @@ public class Main {
         System.out.println("Welcome to Address Book Program");
 
         AddressBook a1=new AddressBook();
+        int i=0;
         a1.CreateContact();
         a1.editContact();
+        a1.deleteContact();
         a1.display();
     }
 }

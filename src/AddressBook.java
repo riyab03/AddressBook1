@@ -56,4 +56,10 @@ public class AddressBook {
         System.out.println(adbook1);
     }
 
+    public void deleteContact() {
+        System.out.println("Enter the first name of person whose detail you want to delete:");
+        String name=sc.next();
+        Contacts c=adbook1.stream().filter(t->t.getFirstName().equalsIgnoreCase(name)).findFirst().get();
+        adbook1.remove(c);
+    }
 }
