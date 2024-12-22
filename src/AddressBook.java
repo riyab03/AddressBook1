@@ -147,6 +147,7 @@ public class AddressBook {
         }
     }
 
+
     public void sortByName() {
         System.out.println("Enter Addressbook Name:");
         String book=sc.next();
@@ -155,6 +156,7 @@ public class AddressBook {
         System.out.println("Sorted By Name:");
         sortedByName.forEach(System.out::println);
     }
+
 
     public void sortByCity() {
         System.out.println("Enter Addressbook Name:");
@@ -165,6 +167,7 @@ public class AddressBook {
         sortedByCity.forEach(System.out::println);
     }
 
+
     public void sortByState() {
         System.out.println("Enter Addressbook Name:");
         String book=sc.next();
@@ -173,6 +176,8 @@ public class AddressBook {
         System.out.println("Sorted By State:");
         sortedByState.forEach(System.out::println);
     }
+
+
     public void sortByZip() {
         System.out.println("Enter Addressbook Name:");
         String book=sc.next();

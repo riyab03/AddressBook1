@@ -29,8 +29,9 @@ public class Main {
                         a1.sortByCity();
                 case 8->
                         a1.sortByState();
-                case 9->
+                case 9->{
                         a1.sortByZip();
+                }
                 default -> {
                     break;
                 }
