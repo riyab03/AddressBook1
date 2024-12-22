@@ -152,7 +152,7 @@ public class AddressBook {
         System.out.println("Enter Addressbook Name:");
         String book=sc.next();
         Set<Contacts>a1=ad.get(book);
-        List<Contacts> sortedByName=a1.stream().sorted(Comparator.comparing(Contacts::getFirstName)).collect(Collectors.toList());
+        List<Contacts> sortedByName=a1.stream().sorted(Comparator.comparing(Contacts::getFirstName)).toList();
         System.out.println("Sorted By Name:");
         sortedByName.forEach(System.out::println);
     }
@@ -162,7 +162,7 @@ public class AddressBook {
         System.out.println("Enter Addressbook Name:");
         String book=sc.next();
         Set<Contacts>a1=ad.get(book);
-        List<Contacts> sortedByCity=a1.stream().sorted(Comparator.comparing(Contacts::getcity)).collect(Collectors.toList());
+        List<Contacts> sortedByCity=a1.stream().sorted(Comparator.comparing(Contacts::getcity)).toList();
         System.out.println("Sorted By City:");
         sortedByCity.forEach(System.out::println);
     }
@@ -172,7 +172,7 @@ public class AddressBook {
         System.out.println("Enter Addressbook Name:");
         String book=sc.next();
         Set<Contacts>a1=ad.get(book);
-        List<Contacts> sortedByState=a1.stream().sorted(Comparator.comparing(Contacts::getstate)).collect(Collectors.toList());
+        List<Contacts> sortedByState=a1.stream().sorted(Comparator.comparing(Contacts::getstate)).toList();
         System.out.println("Sorted By State:");
         sortedByState.forEach(System.out::println);
     }
@@ -182,7 +182,7 @@ public class AddressBook {
         System.out.println("Enter Addressbook Name:");
         String book=sc.next();
         Set<Contacts>a1=ad.get(book);
-        List<Contacts> sortedByZip=a1.stream().sorted(Comparator.comparing(Contacts::getZip)).collect(Collectors.toList());
+        List<Contacts> sortedByZip=a1.stream().sorted(Comparator.comparing(Contacts::getZip)).toList();
         System.out.println("Sorted By Zip:");
         sortedByZip.forEach(System.out::println);
     }
