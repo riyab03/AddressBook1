@@ -5,7 +5,8 @@ public class AddressBook {
 
 
     Map<String, Set<Contacts>> ad=new HashMap<>();
-
+    Map<String,Set<Contacts>>cityStore=new HashMap<>();
+    Map<String,Set<Contacts>>stateStore=new HashMap<>();
 
     public void CreateContact() {
         System.out.println("Enter the name of AddressBook where you want to create contact: ");
@@ -32,7 +33,13 @@ public class AddressBook {
         String email = sc.next();
         Contacts c1 = new Contacts(f_name, l_name, address, city, state, zip, phn_no, email);
         a1.add(c1);
+        storeCityState(c1);
         System.out.println("Created Contact successfully");
+    }
+
+    private void storeCityState(Contacts c) {
+        cityStore.computeIfAbsent(c.getcity(),k->new HashSet<>()).add(c);
+        stateStore.computeIfAbsent(c.getstate(),k->new HashSet<>()).add(c);
     }
 
 
@@ -122,21 +129,19 @@ public class AddressBook {
     }
 
     public void searchByCityState(){
-        System.out.println("Enter the city or state you want to search for: ");
-        String place=sc.next();
-        for(Map.Entry<String,Set<Contacts>>entry:ad.entrySet()){
-            String book=entry.getKey();
-            Set<Contacts>contact=entry.getValue();
-
-            for(Contacts c:contact){
-                if(c.getcity().equalsIgnoreCase(place) || c.getstate().equalsIgnoreCase(place)){
-                    System.out.println("Found in AddressBook: " +book);
-                    System.out.println(c);
-                }
-            }
+        System.out.println("Enter 1 for city and 2 for state");
+        int c=sc.nextInt();
+        if(c==1){
+            System.out.println("Enter the city you want to search for: ");
+            String city=sc.next();
+            cityStore.getOrDefault(city,Collections.emptySet()).stream().forEach(System.out::println);
+        }else if(c==2){
+            System.out.println("Enter the state you want to search for: ");
+            String state=sc.next();
+            stateStore.getOrDefault(state,Collections.emptySet()).stream().forEach(System.out::println);
+        }else{
+            System.out.println("Invalid Choice");
         }
     }
-
-
 
 }
