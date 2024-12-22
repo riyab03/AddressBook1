@@ -24,6 +24,7 @@ public class AddressBook {
         String email = sc.next();
         Contacts c1 = new Contacts(f_name, l_name, address, city, state, zip, phn_no, email);
         adbook1.add(c1);
+        System.out.println("Created Contact successfully");
     }
     
 

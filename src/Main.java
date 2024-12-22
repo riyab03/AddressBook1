@@ -3,5 +3,9 @@
 public class Main {
     public static void main(String[] args) {
         System.out.println("Welcome to Address Book Program");
+
+        AddressBook a1=new AddressBook();
+        a1.CreateContact();
+        
     }
 }
