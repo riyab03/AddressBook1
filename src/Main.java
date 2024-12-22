@@ -9,7 +9,7 @@ public class Main {
         AddressBook a1=new AddressBook();
         int loop=1;
         do {
-            System.out.println("Enter 0}creating addressbook 1}creating a contact 2}editing the details 3}deleting contact detail 4}display the information 5}Search a person by city or state");
+            System.out.println("Enter 0}creating addressbook 1}creating a contact 2}editing the details 3}deleting contact detail 4}display the information 5}Search a person by city or state 6}Sort By name 7}Sort by city 8}Sort by state 9}Sort by Zip");
             int i = sc.nextInt();
             switch (i) {
                 case 0-> a1.addAddressbook();
@@ -23,6 +23,14 @@ public class Main {
                     a1.display();
                 case 5->
                     a1.searchByCityState();
+                case 6->
+                    a1.sortByName();
+                case 7->
+                        a1.sortByCity();
+                case 8->
+                        a1.sortByState();
+                case 9->
+                        a1.sortByZip();
                 default -> {
                     break;
                 }

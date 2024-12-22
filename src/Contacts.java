@@ -28,7 +28,7 @@ public class Contacts {
     public String getstate() {return state;}
     public String getemail() {return email;}
     public int getPhonenumber() {return phn_no;}
-    public int zip() {return zip;}
+    public int getZip() {return zip;}
     public void setFirstname(String next) {this.f_name=next;}
     public void setLastname(String next) {this.l_name=next;}
     public void setCity(String next) {this.city=next;}
