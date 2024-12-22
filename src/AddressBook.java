@@ -1,11 +1,17 @@
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 public class AddressBook {
     Scanner sc = new Scanner(System.in);
-    ArrayList<Contacts>adbook1=new ArrayList<>();
+//    ArrayList<Contacts>adbook1=new ArrayList<>();
+    Map<String, List<Contacts>> ad=new HashMap<>();
     public void CreateContact() {
-
+        System.out.println("Enter the name of AddressBook where you want to create contact: ");
+        String book=sc.next();
+        List<Contacts>a1=ad.get(book);
+        if(a1==null){
+            System.out.println("No such addressBook");
+            return;
+        }
         System.out.println("Enter first name:");
         String f_name = sc.next();
         System.out.println("Enter Last name:");
@@ -23,15 +29,22 @@ public class AddressBook {
         System.out.println("Enter Email:");
         String email = sc.next();
         Contacts c1 = new Contacts(f_name, l_name, address, city, state, zip, phn_no, email);
-        adbook1.add(c1);
+        a1.add(c1);
         System.out.println("Created Contact successfully");
     }
 
 
     public void editContact() {
+        System.out.println("Enter the name of AddressBook where you want to create contact: ");
+        String book=sc.next();
+        List<Contacts>a1=ad.get(book);
+        if(a1==null){
+            System.out.println("No such addressBook");
+            return;
+        }
         System.out.println("Enter the first name of person whose detail you want to edit:");
         String name=sc.next();
-        adbook1.stream().filter(t->t.getFirstName().equalsIgnoreCase(name))
+        a1.stream().filter(t->t.getFirstName().equalsIgnoreCase(name))
                 .map(t->{
                     System.out.println("Contact Found");
                     System.out.println("What would you like to edit? Press 1) first name \\n2) for last name \\n 3) for city \\n 4) for state \\n 5) for email \\n 6)Phone \\n 7) zip code");
@@ -48,18 +61,53 @@ public class AddressBook {
                     }
                     System.out.println("Contact Updated");
                     return true;
-                }).findFirst();
+                }).findFirst().orElse(null);
         return;
     }
 
     public void display(){
-        System.out.println(adbook1);
+        System.out.println("Enter the name of AddressBook where you want to create contact: ");
+        String book=sc.next();
+        List<Contacts>a1=ad.get(book);
+        if(a1==null || a1.isEmpty()){
+            System.out.println("NO Contact found in Addressbook:"+book);
+            return;
+        }
+        System.out.println("Contacts in AddressBook"+book);
+        System.out.println(a1);
     }
 
     public void deleteContact() {
+        System.out.println("Enter the name of AddressBook where you want to create contact: ");
+        String book=sc.next();
+        List<Contacts>a1=ad.get(book);
+        if(a1==null){
+            System.out.println("No such addressBook");
+            return;
+        }
         System.out.println("Enter the first name of person whose detail you want to delete:");
         String name=sc.next();
-        Contacts c=adbook1.stream().filter(t->t.getFirstName().equalsIgnoreCase(name)).findFirst().get();
-        adbook1.remove(c);
+        Contacts c=a1.stream().filter(t->t.getFirstName().equalsIgnoreCase(name)).findFirst().get();
+        if(c==null){
+            System.out.println("Contact not found");
+        }
+        else{
+            a1.remove(c);
+            System.out.println("Contact deleted");
+        }
+    }
+
+    public void addAddressbook() {
+
+        System.out.println("Enter Adressbook Name:");
+        String name=sc.next();
+
+        if(ad.containsKey(name)){
+            System.out.println("AddressBook :"+name+" already exists.");
+        }
+        else{
+            ad.put(name,new ArrayList<>());
+            System.out.println("AddressBook :"+name+" added.");
+        }
     }
 }
