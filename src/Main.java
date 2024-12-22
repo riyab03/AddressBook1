@@ -6,6 +6,7 @@ public class Main {
 
         AddressBook a1=new AddressBook();
         a1.CreateContact();
-        
+        a1.editContact();
+        a1.display();
     }
 }
