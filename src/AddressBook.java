@@ -39,7 +39,9 @@ public class AddressBook {
     public void editContact() {
         System.out.println("Enter the name of AddressBook where you want to create contact: ");
         String book=sc.next();
+
         Set<Contacts>a1=ad.get(book);
+
         if(a1==null){
             System.out.println("No such addressBook");return;
         }
@@ -118,6 +120,23 @@ public class AddressBook {
             System.out.println("AddressBook :"+name+" added.");
         }
     }
+
+    public void searchByCityState(){
+        System.out.println("Enter the city or state you want to search for: ");
+        String place=sc.next();
+        for(Map.Entry<String,Set<Contacts>>entry:ad.entrySet()){
+            String book=entry.getKey();
+            Set<Contacts>contact=entry.getValue();
+
+            for(Contacts c:contact){
+                if(c.getcity().equalsIgnoreCase(place) || c.getstate().equalsIgnoreCase(place)){
+                    System.out.println("Found in AddressBook: " +book);
+                    System.out.println(c);
+                }
+            }
+        }
+    }
+
 
 
 }

@@ -9,7 +9,7 @@ public class Main {
         AddressBook a1=new AddressBook();
         int loop=1;
         do {
-            System.out.println("Enter 0}creating addressbook 1}creating a contact 2}editing the details 3}deleting contact detail 4}display the information");
+            System.out.println("Enter 0}creating addressbook 1}creating a contact 2}editing the details 3}deleting contact detail 4}display the information 5}Search a person by city or state");
             int i = sc.nextInt();
             switch (i) {
                 case 0-> a1.addAddressbook();
@@ -21,6 +21,8 @@ public class Main {
                     a1.deleteContact();
                 case 4->
                     a1.display();
+                case 5->
+                    a1.searchByCityState();
                 default -> {
                     break;
                 }
